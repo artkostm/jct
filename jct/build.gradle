@@ -1,0 +1,40 @@
+buildscript {
+    repositories { mavenCentral() }
+    dependencies {
+		classpath 'log4j:log4j:1.+'
+    }
+}
+
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+group='jct'
+version='0.0.1-SNAPSHOT'
+
+[compileJava, compileTestJava]*.options*.compilerArgs = ['-Xlint:all']
+
+sourceCompatibility = 1.6
+targetCompatibility = 1.6
+
+sourceSets {
+    main {
+        java {
+            srcDir 'src/main/java'
+        }
+    }
+}
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compile 'log4j:log4j:1.+'
+}
+
+jar {
+    manifest {
+        attributes 'Created-By': 'artkostm,'+System.getProperty('java.version') + ' (' + System.getProperty('java.vendor') + ')'
+		attributes 'Main-Class': 'by.artkostm.jct.Sample'
+    }
+}
